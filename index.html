@@ -124,6 +124,22 @@
       border-radius: 6px;
       cursor: pointer;
     }
+
+    /* UPI button style */
+    .upi-btn {
+      display: inline-block;
+      background: #4CAF50;
+      color: white;
+      padding: 10px 20px;
+      font-size: 16px;
+      border-radius: 6px;
+      text-decoration: none;
+      margin-top: 10px;
+      cursor: pointer;
+    }
+    .upi-btn:hover {
+      background: #45a049;
+    }
   </style>
 </head>
 <body>
@@ -184,9 +200,11 @@
   <div class="support-modal" id="supportModal">
     <div class="modal-content">
       <h2>Support This Project ❤️</h2>
-      <p>If you'd like to support, scan this QR to contribute any amount 🙏</p>
+      <p>If you'd like to support, scan this QR or use any UPI App below:</p>
       <img src="upi.png" alt="Support QR Code">
       <br>
+      <a href="upi://pay?pa=7692810889@amazonpay&pn=Support%20Creator&cu=INR" class="upi-btn">Pay with any UPI App</a>
+      <br><br>
       <button onclick="continueToPrint()">Done</button>
     </div>
   </div>
