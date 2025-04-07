@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Printable Matrimonial Biodata</title>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500&family=Roboto&display=swap" rel="stylesheet">
   <style>
@@ -81,9 +81,48 @@
       cursor: pointer;
     }
     @media print {
-      .print-btn, .photo-upload {
-        display: none;
+      .print-btn, .photo-upload, .support-modal {
+        display: none !important;
       }
+    }
+
+    /* Modal styles */
+    .support-modal {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0,0,0,0.6);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 9999;
+      display: none;
+    }
+    .modal-content {
+      background: white;
+      padding: 30px;
+      border-radius: 12px;
+      text-align: center;
+      max-width: 400px;
+      box-shadow: 0 5px 25px rgba(0,0,0,0.3);
+    }
+    .modal-content img {
+      width: 200px;
+      margin-bottom: 15px;
+    }
+    .modal-content h2 {
+      font-size: 20px;
+      color: #8b0000;
+      margin-bottom: 10px;
+    }
+    .modal-content button {
+      padding: 10px 20px;
+      background: #8b0000;
+      color: white;
+      font-size: 16px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
     }
   </style>
 </head>
@@ -138,13 +177,33 @@
       </div>
     </div>
 
-    <button class="print-btn" onclick="window.print()">Print as PDF</button>
+    <button class="print-btn" onclick="showSupportModal()">Print as PDF</button>
+  </div>
+
+  <!-- Support Modal -->
+  <div class="support-modal" id="supportModal">
+    <div class="modal-content">
+      <h2>Support This Project ❤️</h2>
+      <p>If you'd like to support, scan this QR to contribute any amount 🙏</p>
+      <img src="upi.png" alt="Support QR Code">
+      <br>
+      <button onclick="continueToPrint()">Done</button>
+    </div>
   </div>
 
   <script>
     function loadPhoto(event) {
       const preview = document.getElementById('preview');
       preview.src = URL.createObjectURL(event.target.files[0]);
+    }
+
+    function showSupportModal() {
+      document.getElementById('supportModal').style.display = 'flex';
+    }
+
+    function continueToPrint() {
+      document.getElementById('supportModal').style.display = 'none';
+      window.print();
     }
   </script>
 </body>
